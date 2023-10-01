@@ -2,7 +2,7 @@ const { Client, Collection, IntentsBitField, ApplicationCommandType } = require(
 const fs = require('fs');
 
 const client = new Client({
-  intents: [IntentsBitField.Flags.Guilds],
+  intents: [IntentsBitField.Flags.Guilds, IntentsBitField.Flags.GuildMessages],
   partials: ['MESSAGE', 'CHANNEL']
 });
 
