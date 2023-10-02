@@ -12,6 +12,8 @@ const config = require('./config.js');
 client.once('ready', async () => {
   client.user.setActivity("If broke, return to Kazenone");
   
+  client.deletedMessages = [];
+  
   // Register commands
   client.commands = new Collection();
   const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));

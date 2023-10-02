@@ -30,7 +30,13 @@ module.exports = {
     var messages = await message.channel.messages.fetch({ limit: 50, before: message.id })
       .then(messages => messages.filter(m => m.author.id === message.author.id && (message.createdTimestamp - m.createdTimestamp) < searchWindowMillis));
       
-    if (!messages.size) {
+    // Remove cached messages that are too old to care about
+    client.deletedMessages = client.deletedMessages.filter(m => message.createdTimestamp - m.createdTimestamp < searchWindowMillis)
+    
+    // Check recently deleted messages for violations
+    var deletedMessages = client.deletedMessages.filter(m => m.authorId == message.author.id && m.channelId == message.channel.id)
+      
+    if (!messages.size && !deletedMessages.length) {
       return;
     }
 
