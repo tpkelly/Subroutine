@@ -20,7 +20,7 @@ module.exports = {
     }
     
     // Ignore mods and bots
-    if (message.author.bot /*|| !message.member.manageable */) {
+    if (message.author.bot || !message.member.manageable) {
       return;
     }
   
