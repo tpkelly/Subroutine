@@ -38,6 +38,10 @@ module.exports = {
     
     await message.delete();
     
+    // Post notification to mods
+    await message.guild.channels.fetch(guildConfig.notifyChannel)
+      .then(channel => channel.send({ embeds: [{ title: 'Removed Trade/Aid Post', description: `Deleted post from ${message.author.tag} (${message.author.id}) in <#${message.channel.id}>`, color: 0xff0000 }]}));
+    
     // Get rid of the bot reply to the user after 60 seconds
     setTimeout(() => reply.delete(), 60000);
   }
