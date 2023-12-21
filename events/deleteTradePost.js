@@ -20,7 +20,8 @@ module.exports = {
     }
     
     // Ignore mods and bots
-    if (message.author.bot || !message.member.manageable) {
+    var channelMember = await message.guild.members.fetch(message.author.id);
+    if (message.author.bot || !channelMember.manageable) {
       return;
     }
   

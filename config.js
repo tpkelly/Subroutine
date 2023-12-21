@@ -1,6 +1,6 @@
 const testServer = {
   id: '589466032662642689',
-  tradeCategory: '1158127013501079735',
+  tradeCategory: '1187182891327823872',
   notifyChannel: '589466032662642691'
 }
 
